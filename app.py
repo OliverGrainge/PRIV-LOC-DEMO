@@ -33,73 +33,160 @@ MPL = False
 IMAGE_FOLDER = './images'
 CSV_FILE = './select.csv'
 BASE_LOCATION = [0, 23]
+
+# ============================================================================
+# REPLACE THIS RULES VARIABLE WITH THE ENHANCED VERSION
+# ============================================================================
 RULES = """
 <div class="hero-section">
     <div class="hero-content">
-        <h1 class="hero-title"><span class="title-icon"></span>PRIV-LOC</h1>
+        <div class="logo-container">
+            <div class="logo-emblem">🌍</div>
+        </div>
+        <h1 class="hero-title">
+            <span class="title-gradient">PRIV-LOC</span>
+        </h1>
         <h2 class="hero-subtitle">Geolocation Privacy Challenge</h2>
         <div class="hero-description">
             <p>Challenge yourself against state-of-the-art AI models in a real-time geolocation game. Can you identify photo locations better than Claude, GPT, Gemini, and Qwen?</p>
         </div>
     </div>
-    <div class="globe-container">
-        <img class="rotating-globe" alt="Rotating globe" src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Rotating_globe.gif">
+    <div class="stats-preview">
+        <div class="stat-item">
+            <div class="stat-number">5000</div>
+            <div class="stat-label">Max Points</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">4</div>
+            <div class="stat-label">AI Models</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">∞</div>
+            <div class="stat-label">Challenges</div>
+        </div>
     </div>
 </div>
 
 <div class="info-grid">
-    <div class="info-card">
-        <h3>🎯 How to Play</h3>
-        <p>Click on the map where you think the image was taken, then click <strong>Select</strong> to confirm your guess.</p>
+    <div class="info-card how-to-play">
+        <div class="card-icon">🎯</div>
+        <h3>How to Play</h3>
+        <p>Click on the map where you think the image was taken, then click <strong>Select</strong> to confirm your guess. The closer you are, the higher your score!</p>
+        <div class="feature-list">
+            <div class="feature-item">📍 Click to guess location</div>
+            <div class="feature-item">⚡ Real-time scoring</div>
+            <div class="feature-item">🏆 Beat the AIs</div>
+        </div>
     </div>
     
-    <div class="info-card">
-        <h3>🤖 Your Competition</h3>
-        <ul class="ai-models">
-            <li><span class="model-badge claude">Claude</span> Anthropic</li>
-            <li><span class="model-badge gpt">GPT</span> OpenAI</li>
-            <li><span class="model-badge gemini">Gemini</span> Google</li>
-            <li><span class="model-badge qwen">Qwen</span> Alibaba</li>
-        </ul>
+    <div class="info-card ai-competition">
+        <div class="card-icon">🤖</div>
+        <h3>Your Competition</h3>
+        <p>Face off against cutting-edge AI models from leading tech companies:</p>
+        <div class="ai-models">
+            <div class="model-item">
+                <span class="model-badge claude">Claude</span>
+                <span class="model-company">Anthropic</span>
+            </div>
+            <div class="model-item">
+                <span class="model-badge gpt">GPT</span>
+                <span class="model-company">OpenAI</span>
+            </div>
+            <div class="model-item">
+                <span class="model-badge gemini">Gemini</span>
+                <span class="model-company">Google</span>
+            </div>
+            <div class="model-item">
+                <span class="model-badge qwen">Qwen</span>
+                <span class="model-company">Alibaba</span>
+            </div>
+        </div>
     </div>
     
-    <div class="info-card">
-        <h3>📊 Scoring System</h3>
-        <p>Earn up to <strong>5000 points</strong> per image based on accuracy. The closer your guess, the higher your score!</p>
+    <div class="info-card scoring-system">
+        <div class="card-icon">📊</div>
+        <h3>Scoring System</h3>
+        <p>Earn up to <strong class="highlight-score">5000 points</strong> per image based on accuracy. Distance matters!</p>
+        <div class="scoring-breakdown">
+            <div class="score-tier perfect">
+                <div class="tier-score">5000</div>
+                <div class="tier-desc">Perfect guess</div>
+            </div>
+            <div class="score-tier great">
+                <div class="tier-score">3000+</div>
+                <div class="tier-desc">Within 100km</div>
+            </div>
+            <div class="score-tier good">
+                <div class="tier-score">1000+</div>
+                <div class="tier-desc">Within 1000km</div>
+            </div>
+        </div>
         <div class="formula-container">
-            <img class="formula" src="https://latex.codecogs.com/svg.image?g(d)=5000\exp\left(\\frac{-d}{1492.7}\\right)" alt="Scoring formula" />
+            <div class="formula-text">Score = 5000 × e^(-distance/1492.7)</div>
         </div>
     </div>
 </div>
 
 <div class="challenge-section">
-    <h2>🏆 Ready for the Challenge?</h2>
-    <p>This isn't just a game—it's cutting-edge research in AI privacy and geolocation. Your performance helps us understand how humans compare to AI in visual location detection.</p>
+    <div class="challenge-content">
+        <h2>🏆 Ready for the Challenge?</h2>
+        <p>This isn't just a game—it's cutting-edge research in AI privacy and geolocation. Your performance helps us understand how humans compare to AI in visual location detection.</p>
+        <div class="research-highlight">
+            <div class="research-item">
+                <span class="research-icon">🔬</span>
+                <span>Contributing to AI research</span>
+            </div>
+            <div class="research-item">
+                <span class="research-icon">🔒</span>
+                <span>Privacy implications study</span>
+            </div>
+            <div class="research-item">
+                <span class="research-icon">🌐</span>
+                <span>Human vs AI comparison</span>
+            </div>
+        </div>
+    </div>
 </div>
 """
 
+# ============================================================================
+# REPLACE THIS CSS VARIABLE WITH THE ENHANCED VERSION
+# ============================================================================
 css = """
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
 :root {
-    --primary-color: #2563eb;
-    --secondary-color: #1e40af;
-    --accent-color: #f59e0b;
-    --success-color: #10b981;
-    --danger-color: #ef4444;
-    --text-primary: #1f2937;
+    --primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    --accent: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    --success: linear-gradient(135deg, #11D196 0%, #10B981 100%);
+    --warning: linear-gradient(135deg, #FCD34D 0%, #F59E0B 100%);
+    --danger: linear-gradient(135deg, #F87171 0%, #EF4444 100%);
+    
+    --text-primary: #0f1419;
     --text-secondary: #6b7280;
+    --text-tertiary: #9ca3af;
+    
     --bg-primary: #ffffff;
     --bg-secondary: #f8fafc;
     --bg-accent: #f1f5f9;
-    --border-color: #e2e8f0;
+    --bg-glass: rgba(255, 255, 255, 0.1);
+    
+    --border-primary: #e5e7eb;
+    --border-secondary: #d1d5db;
+    
     --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
     --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
     --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
     --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-    --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-    --gradient-accent: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+    
+    --blur-sm: blur(4px);
+    --blur-md: blur(8px);
+    --blur-lg: blur(16px);
+    
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-fast: all 0.15s ease;
 }
 
 * {
@@ -107,8 +194,10 @@ css = """
 }
 
 body {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: var(--primary);
     min-height: 100vh;
+    margin: 0;
+    padding: 0;
 }
 
 .gradio-container {
@@ -117,36 +206,15 @@ body {
     background: transparent !important;
 }
 
-/* Start Button Specific Styling */
-.gradio-container [id="start-button"] {
-    width: 200px !important;
-    margin: 0 auto !important;
-    display: block !important;
-}
-
-/* Hero Section */
+/* Enhanced Hero Section */
 .hero-section {
-    background: var(--gradient-primary);
-    padding: 4rem 2rem;
+    background: var(--primary);
+    padding: 6rem 2rem 4rem;
     text-align: center;
     color: white;
     position: relative;
     overflow: hidden;
-    margin-bottom: 2rem;
-}
-
-.logo-container {
-    margin-bottom: 1.5rem;
-}
-
-.logo {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    box-shadow: var(--shadow-xl);
-    background: white;
-    padding: 10px;
-    margin-bottom: 1rem;
+    margin-bottom: 0;
 }
 
 .hero-section::before {
@@ -156,234 +224,455 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
-    opacity: 0.1;
+    background: 
+        radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 40% 80%, rgba(255, 255, 255, 0.06) 0%, transparent 50%);
+    pointer-events: none;
 }
 
 .hero-content {
     position: relative;
     z-index: 2;
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
+}
+
+.logo-container {
+    margin-bottom: 2rem;
+}
+
+.logo-emblem {
+    font-size: 5rem;
+    margin-bottom: 1rem;
+    filter: drop-shadow(0 8px 16px rgba(0,0,0,0.2));
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
 }
 
 .hero-title {
-    font-size: 4rem;
-    font-weight: 800;
-    margin: 0 0 1rem 0;
-    background: linear-gradient(45deg, #fff, #e0e7ff);
+    font-size: 5rem;
+    font-weight: 900;
+    margin: 0 0 1.5rem 0;
+    line-height: 1.1;
+}
+
+.title-gradient {
+    background: linear-gradient(45deg, #fff 0%, #e0e7ff 50%, #c7d2fe 100%);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
 }
 
 .hero-subtitle {
-    font-size: 1.5rem;
+    font-size: 1.75rem;
     font-weight: 600;
     margin: 0 0 2rem 0;
-    opacity: 0.9;
+    opacity: 0.95;
+    letter-spacing: -0.025em;
 }
 
 .hero-description p {
-    font-size: 1.2rem;
-    line-height: 1.6;
+    font-size: 1.25rem;
+    line-height: 1.7;
+    opacity: 0.9;
+    margin: 0 0 3rem 0;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Stats Preview */
+.stats-preview {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin-top: 3rem;
+}
+
+.stat-item {
+    text-align: center;
+    backdrop-filter: var(--blur-sm);
+    background: var(--bg-glass);
+    padding: 1.5rem 2rem;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: var(--transition);
+}
+
+.stat-item:hover {
+    transform: translateY(-4px);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    font-size: 0.875rem;
     opacity: 0.8;
-    margin: 0;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
-.globe-container {
-    margin-top: 2rem;
-}
-
-.rotating-globe {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    box-shadow: var(--shadow-xl);
-    filter: brightness(1.1);
-}
-
-/* Info Grid */
+/* Enhanced Info Grid */
 .info-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
     gap: 2rem;
-    padding: 2rem;
-    max-width: 1200px;
+    padding: 4rem 2rem;
+    max-width: 1400px;
     margin: 0 auto;
+    background: var(--bg-secondary);
 }
 
 .info-card {
     background: var(--bg-primary);
-    border-radius: 16px;
-    padding: 2rem;
-    box-shadow: var(--shadow-lg);
-    border: 1px solid var(--border-color);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 20px;
+    padding: 2.5rem;
+    box-shadow: var(--shadow-xl);
+    border: 1px solid var(--border-primary);
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.info-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--primary);
+    transform: scaleX(0);
+    transition: var(--transition);
+}
+
+.info-card:hover::before {
+    transform: scaleX(1);
 }
 
 .info-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-xl);
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-2xl);
+}
+
+.card-icon {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    display: block;
 }
 
 .info-card h3 {
-    font-size: 1.25rem;
-    font-weight: 600;
+    font-size: 1.5rem;
+    font-weight: 700;
     color: var(--text-primary);
     margin: 0 0 1rem 0;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+    letter-spacing: -0.025em;
 }
 
 .info-card p {
     color: var(--text-secondary);
-    line-height: 1.6;
-    margin: 0 0 1rem 0;
+    line-height: 1.7;
+    margin: 0 0 1.5rem 0;
+    font-size: 1.1rem;
 }
 
-.ai-models {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+/* Feature List */
+.feature-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
 }
 
-.ai-models li {
+.feature-item {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
-    padding: 0.5rem 0;
+    gap: 0.5rem;
+    font-size: 0.95rem;
     color: var(--text-secondary);
+    font-weight: 500;
+}
+
+/* Enhanced AI Models */
+.ai-models {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.model-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    background: var(--bg-accent);
+    border-radius: 12px;
+    transition: var(--transition);
+}
+
+.model-item:hover {
+    background: var(--bg-secondary);
+    transform: translateX(4px);
 }
 
 .model-badge {
-    padding: 0.25rem 0.75rem;
-    border-radius: 20px;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
     font-size: 0.875rem;
-    font-weight: 600;
+    font-weight: 700;
     color: white;
-    min-width: 60px;
-    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    box-shadow: var(--shadow-md);
 }
 
-.model-badge.claude { background: #8b5cf6; }
-.model-badge.gpt { background: #10b981; }
-.model-badge.gemini { background: #3b82f6; }
-.model-badge.qwen { background: #f59e0b; }
+.model-badge.claude { background: linear-gradient(135deg, #8b5cf6, #7c3aed); }
+.model-badge.gpt { background: linear-gradient(135deg, #10b981, #059669); }
+.model-badge.gemini { background: linear-gradient(135deg, #3b82f6, #2563eb); }
+.model-badge.qwen { background: linear-gradient(135deg, #f59e0b, #d97706); }
+
+.model-company {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-weight: 600;
+}
+
+/* Enhanced Scoring System */
+.highlight-score {
+    background: var(--warning);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 800;
+}
+
+.scoring-breakdown {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.score-tier {
+    text-align: center;
+    padding: 1rem;
+    border-radius: 12px;
+    transition: var(--transition);
+}
+
+.score-tier.perfect {
+    background: linear-gradient(135deg, rgba(17, 209, 150, 0.1), rgba(16, 185, 129, 0.1));
+    border: 2px solid rgba(16, 185, 129, 0.3);
+}
+
+.score-tier.great {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(37, 99, 235, 0.1));
+    border: 2px solid rgba(59, 130, 246, 0.3);
+}
+
+.score-tier.good {
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(217, 119, 6, 0.1));
+    border: 2px solid rgba(245, 158, 11, 0.3);
+}
+
+.tier-score {
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+}
+
+.tier-desc {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
 
 .formula-container {
-    text-align: center;
-    margin: 1rem 0;
-}
-
-.formula {
-    max-width: 100%;
-    height: auto;
     background: var(--bg-accent);
-    padding: 1rem;
-    border-radius: 8px;
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-top: 1.5rem;
+    border: 1px solid var(--border-secondary);
 }
 
-/* Challenge Section */
+.formula-text {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    text-align: center;
+}
+
+/* Enhanced Challenge Section */
 .challenge-section {
     background: var(--bg-primary);
-    padding: 3rem 2rem;
+    padding: 4rem 2rem;
     text-align: center;
-    margin: 2rem auto;
+    margin: 0;
+    border-top: 1px solid var(--border-primary);
+}
+
+.challenge-content {
     max-width: 800px;
-    border-radius: 16px;
-    box-shadow: var(--shadow-lg);
-    border: 1px solid var(--border-color);
+    margin: 0 auto;
 }
 
 .challenge-section h2 {
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--text-primary);
-    margin: 0 0 1rem 0;
+    font-size: 2.5rem;
+    font-weight: 800;
+    background: var(--primary);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0 0 1.5rem 0;
+    letter-spacing: -0.025em;
 }
 
 .challenge-section p {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     color: var(--text-secondary);
-    line-height: 1.6;
-    margin: 0;
+    line-height: 1.7;
+    margin: 0 0 2rem 0;
 }
 
-/* Game Interface */
-.game-container {
-    background: var(--bg-primary);
-    border-radius: 16px;
-    padding: 2rem;
-    margin: 2rem;
-    box-shadow: var(--shadow-xl);
-    border: 1px solid var(--border-color);
+.research-highlight {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
 }
 
-/* Buttons */
+.research-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 1.5rem;
+    background: var(--bg-accent);
+    border-radius: 25px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    transition: var(--transition);
+    border: 1px solid var(--border-secondary);
+}
+
+.research-item:hover {
+    background: var(--bg-secondary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.research-icon {
+    font-size: 1.25rem;
+}
+
+/* Enhanced Buttons */
 button {
-    background: var(--gradient-primary) !important;
+    background: var(--primary) !important;
     border: none !important;
-    border-radius: 12px !important;
-    padding: 0.75rem 2rem !important;
-    font-weight: 600 !important;
-    font-size: 1rem !important;
+    border-radius: 16px !important;
+    padding: 1rem 2.5rem !important;
+    font-weight: 700 !important;
+    font-size: 1.1rem !important;
     color: white !important;
     cursor: pointer !important;
-    transition: all 0.3s ease !important;
-    box-shadow: var(--shadow-md) !important;
+    transition: var(--transition) !important;
+    box-shadow: var(--shadow-lg) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.025em !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+}
+
+button:hover::before {
+    left: 100%;
 }
 
 button:hover {
-    transform: translateY(-2px) !important;
-    box-shadow: var(--shadow-lg) !important;
-    filter: brightness(1.05) !important;
+    transform: translateY(-3px) !important;
+    box-shadow: var(--shadow-2xl) !important;
+    filter: brightness(1.1) !important;
 }
 
 button:active {
-    transform: translateY(0) !important;
+    transform: translateY(-1px) !important;
 }
 
-.secondary-btn {
-    background: var(--gradient-secondary) !important;
+/* Start Button Special Styling */
+.gradio-container [id="start-button"] {
+    width: 250px !important;
+    margin: 2rem auto !important;
+    display: block !important;
+    font-size: 1.25rem !important;
+    padding: 1.25rem 3rem !important;
+    background: var(--success) !important;
+    box-shadow: var(--shadow-xl) !important;
 }
 
-.success-btn {
-    background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
-}
-
-.danger-btn {
-    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%) !important;
+/* Game Interface Enhancements */
+.game-container {
+    background: var(--bg-primary);
+    border-radius: 20px;
+    padding: 2rem;
+    margin: 2rem;
+    box-shadow: var(--shadow-2xl);
+    border: 1px solid var(--border-primary);
 }
 
 /* Results and Stats */
 .result-card {
     background: var(--bg-primary);
-    border-radius: 12px;
-    padding: 1.5rem;
+    border-radius: 16px;
+    padding: 2rem;
     margin: 1rem 0;
-    box-shadow: var(--shadow-md);
-    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--border-primary);
 }
 
 .score-display {
-    font-size: 1.25rem;
-    font-weight: 600;
+    font-size: 1.5rem;
+    font-weight: 700;
     text-align: center;
-    padding: 1rem;
-    background: var(--gradient-accent);
+    padding: 1.5rem;
+    background: var(--accent);
     color: white;
-    border-radius: 12px;
+    border-radius: 16px;
     margin: 1rem 0;
+    box-shadow: var(--shadow-lg);
 }
 
-/* Dataframe Styling */
+/* Enhanced Dataframe */
 .dataframe {
-    border-radius: 12px !important;
+    border-radius: 16px !important;
     overflow: hidden !important;
-    box-shadow: var(--shadow-md) !important;
+    box-shadow: var(--shadow-lg) !important;
+    border: 1px solid var(--border-primary) !important;
 }
 
 .dataframe table {
@@ -392,118 +681,192 @@ button:active {
 }
 
 .dataframe th {
-    background: var(--gradient-primary) !important;
+    background: var(--primary) !important;
     color: white !important;
-    padding: 1rem !important;
-    font-weight: 600 !important;
+    padding: 1.25rem !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.025em !important;
+    font-size: 0.875rem !important;
 }
 
 .dataframe td {
-    padding: 0.75rem 1rem !important;
-    border-bottom: 1px solid var(--border-color) !important;
+    padding: 1rem 1.25rem !important;
+    border-bottom: 1px solid var(--border-primary) !important;
+    font-weight: 500 !important;
 }
 
 .dataframe tr:hover {
     background: var(--bg-accent) !important;
 }
 
-/* Image containers */
-.image-container {
-    border-radius: 16px;
+/* Image and Map Containers */
+.image-container, .map-container {
+    border-radius: 20px;
     overflow: hidden;
-    box-shadow: var(--shadow-lg);
-    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-xl);
+    border: 2px solid var(--border-primary);
+    transition: var(--transition);
 }
 
-/* Progress indicator */
+.image-container:hover, .map-container:hover {
+    transform: scale(1.02);
+    box-shadow: var(--shadow-2xl);
+}
+
+/* Progress Indicator */
 .progress-indicator {
-    font-size: 1.25rem;
-    font-weight: 600;
+    font-size: 1.5rem;
+    font-weight: 700;
     color: var(--text-primary);
     text-align: center;
-    padding: 1rem;
+    padding: 1.5rem;
     background: var(--bg-accent);
-    border-radius: 12px;
+    border-radius: 16px;
     margin: 1rem 0;
+    border: 1px solid var(--border-secondary);
+}
+
+/* End Game Styling */
+.end-game-title {
+    font-size: 4rem !important;
+    font-weight: 900 !important;
+    background: var(--primary) !important;
+    background-clip: text !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    text-align: center !important;
+    margin: 3rem 0 !important;
+    letter-spacing: -0.025em !important;
+}
+
+.end-game-subtitle {
+    font-size: 1.75rem !important;
+    color: var(--text-secondary) !important;
+    text-align: center !important;
+    margin: 1rem 0 3rem 0 !important;
+    font-weight: 600 !important;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
     .hero-title {
-        font-size: 2.5rem;
+        font-size: 3rem;
     }
     
     .hero-subtitle {
         font-size: 1.25rem;
     }
     
+    .stats-preview {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+    }
+    
+    .stat-item {
+        width: 200px;
+    }
+    
     .info-grid {
         grid-template-columns: 1fr;
-        padding: 1rem;
+        padding: 2rem 1rem;
+        gap: 1.5rem;
     }
     
     .hero-section {
-        padding: 2rem 1rem;
+        padding: 3rem 1rem 2rem;
     }
     
     .game-container {
         margin: 1rem;
         padding: 1rem;
     }
+    
+    .scoring-breakdown {
+        grid-template-columns: 1fr;
+    }
+    
+    .research-highlight {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .challenge-section h2 {
+        font-size: 2rem;
+    }
 }
 
 /* Animations */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+@keyframes fadeInUp {
+    from { 
+        opacity: 0; 
+        transform: translateY(30px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
 }
 
-@keyframes slideIn {
-    from { opacity: 0; transform: translateX(-20px); }
-    to { opacity: 1; transform: translateX(0); }
+@keyframes slideInLeft {
+    from { 
+        opacity: 0; 
+        transform: translateX(-30px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateX(0); 
+    }
 }
 
-.fade-in {
-    animation: fadeIn 0.6s ease-out;
+@keyframes pulse {
+    0%, 100% { 
+        transform: scale(1); 
+    }
+    50% { 
+        transform: scale(1.05); 
+    }
 }
 
-.slide-in {
-    animation: slideIn 0.6s ease-out;
+.fade-in-up {
+    animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Map and image styling */
-.map-container, .image-container {
-    border-radius: 16px;
+.slide-in-left {
+    animation: slideInLeft 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.pulse-animation {
+    animation: pulse 2s infinite;
+}
+
+/* Loading States */
+.loading {
+    position: relative;
     overflow: hidden;
-    box-shadow: var(--shadow-lg);
-    border: 2px solid var(--border-color);
-    transition: transform 0.3s ease;
 }
 
-.map-container:hover, .image-container:hover {
-    transform: scale(1.02);
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    animation: shimmer 1.5s infinite;
 }
 
-/* End game styling */
-.end-game-title {
-    font-size: 3rem !important;
-    font-weight: 800 !important;
-    background: var(--gradient-primary) !important;
-    background-clip: text !important;
-    -webkit-background-clip: text !important;
-    -webkit-text-fill-color: transparent !important;
-    text-align: center !important;
-    margin: 2rem 0 !important;
-}
-
-.end-game-subtitle {
-    font-size: 1.5rem !important;
-    color: var(--text-secondary) !important;
-    text-align: center !important;
-    margin: 1rem 0 2rem 0 !important;
+@keyframes shimmer {
+    0% { left: -100%; }
+    100% { left: 100%; }
 }
 """
 
+# ============================================================================
+# ALSO REPLACE THE space_js VARIABLE WITH THE ENHANCED VERSION
+# ============================================================================
 space_js = """
 <script src="https://cdn.jsdelivr.net/npm/@rapideditor/country-coder@5.2/dist/country-coder.iife.min.js"></script>
 <script>
@@ -534,17 +897,103 @@ function shortcuts_exit(e) {
 document.addEventListener('keypress', shortcuts, false);
 document.addEventListener('keypress', shortcuts_exit, false);
 
-// Add fade-in animations to elements
+// Enhanced animations and interactions
 document.addEventListener('DOMContentLoaded', function() {
-    const elements = document.querySelectorAll('.info-card, .challenge-section');
-    elements.forEach((el, index) => {
+    // Staggered animations for info cards
+    const infoCards = document.querySelectorAll('.info-card');
+    infoCards.forEach((card, index) => {
         setTimeout(() => {
-            el.classList.add('fade-in');
-        }, index * 200);
+            card.classList.add('fade-in-up');
+        }, index * 150);
     });
+    
+    // Animate stats preview
+    const statItems = document.querySelectorAll('.stat-item');
+    statItems.forEach((item, index) => {
+        setTimeout(() => {
+            item.classList.add('slide-in-left');
+        }, 500 + index * 100);
+    });
+    
+    // Add hover effects to model items
+    const modelItems = document.querySelectorAll('.model-item');
+    modelItems.forEach(item => {
+        item.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateX(8px) scale(1.02)';
+        });
+        
+        item.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateX(0) scale(1)';
+        });
+    });
+    
+    // Add pulse animation to start button
+    const startButton = document.getElementById('start-button');
+    if (startButton) {
+        startButton.classList.add('pulse-animation');
+    }
+    
+    // Intersection Observer for scroll animations
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '-50px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+    
+    // Observe challenge section
+    const challengeSection = document.querySelector('.challenge-section');
+    if (challengeSection) {
+        challengeSection.style.opacity = '0';
+        challengeSection.style.transform = 'translateY(30px)';
+        challengeSection.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+        observer.observe(challengeSection);
+    }
 });
+
+// Function to add loading states
+function addLoadingState(element) {
+    element.classList.add('loading');
+    setTimeout(() => {
+        element.classList.remove('loading');
+    }, 1000);
+}
+
+// Function to create particle effect (optional enhancement)
+function createParticles() {
+    const hero = document.querySelector('.hero-section');
+    if (!hero) return;
+    
+    for (let i = 0; i < 20; i++) {
+        const particle = document.createElement('div');
+        particle.style.cssText = `
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: float ${3 + Math.random() * 4}s linear infinite;
+            left: ${Math.random() * 100}%;
+            top: ${Math.random() * 100}%;
+            animation-delay: ${Math.random() * 3}s;
+        `;
+        hero.appendChild(particle);
+    }
+}
 </script>
 """
+
+# ============================================================================
+# THE REST OF YOUR CODE REMAINS THE SAME FROM HERE
+# ============================================================================
 
 def sample_points_along_geodesic(start_lat, start_lon, end_lat, end_lon, min_length_km=2000, segment_length_km=5000, num_samples=None):
     geod = Geodesic.WGS84
@@ -1031,24 +1480,23 @@ if __name__ == "__main__":
             return gr.update(), gr.update(), gr.update(), gr.update(), gr.update(), gr.update(), gr.update(), gr.update(), gr.update(), gr.update(), gr.update(), gr.update()
 
     def start(state):
-        # create a unique random temporary name under CACHE_DIR
-        # generate random hex and make sure it doesn't exist under CACHE_DIR
         state['engine'] = Engine(IMAGE_FOLDER, CSV_FILE, MPL, max_images=2)
         state['clicked'] = False
         image, text = state['engine'].load_image()
-
+        # Force new map to re-initialize JS
+        new_map = make_map_()
         return (
-            gr.update(visible=True),
-            gr.update(visible=False),
-            gr.update(value=image, visible=True),
-            gr.update(value=text, visible=True),
-            gr.update(visible=True),
-            gr.update(visible=False),
-            gr.update(value="<h1>Im2GPS (GPT-4.1)</h1>"),
-            gr.update(visible=False),
-            gr.update(visible=False),
-            gr.update(value="-1"),
-            gr.update(visible=True),
+            gr.update(value=new_map, visible=True),  # map_
+            gr.update(visible=False),                # results
+            gr.update(value=image, visible=True),    # image_
+            gr.update(value=text, visible=True),     # text_count
+            gr.update(visible=True),                 # text
+            gr.update(visible=False),                # next_button
+            gr.update(value="<h1>Im2GPS (GPT-4.1)</h1>"), # rules
+            gr.update(visible=False),                # state
+            gr.update(visible=False),                # start_button
+            gr.update(value="-1"),                   # coords
+            gr.update(visible=True),                 # select_button
         )
 
     with gr.Blocks(css=css, head=space_js) as demo:
@@ -1083,13 +1531,13 @@ if __name__ == "__main__":
         exit_button.click(exit_, inputs=[state], outputs=[map_, results, image_, text_count, text, next_button, perf, coords, rules, text_end, select_button, start_button])
 
     # local deployment
-    #demo.queue().launch(allowed_paths=["custom.ttf", "geoscore.gif"], debug=True)
+    demo.queue().launch(allowed_paths=["custom.ttf", "geoscore.gif"], debug=True)
 
     # heroku deployment
-    port = int(os.environ.get("PORT", 7860))
-    demo.queue().launch(
-        server_name="0.0.0.0",
-        server_port=port,
-        debug=False,
-        allowed_paths=["custom.ttf", "geoscore.gif"]
-    )
+    #port = int(os.environ.get("PORT", 7860))
+    #demo.queue().launch(
+    #    server_name="0.0.0.0",
+    #    server_port=port,
+    #    debug=False,
+    #    allowed_paths=["custom.ttf", "geoscore.gif"]
+    #)
