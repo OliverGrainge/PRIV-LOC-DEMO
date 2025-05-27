@@ -1423,6 +1423,21 @@ class Engine(object):
             json.dump({"lat": location[0], "lon": location[1], "time": time_elapsed, "user": self.tag}, f)
             f.write('\n')
 
+def go_to_landing(state):
+    state.clear()
+    return (
+        gr.update(visible=False),  # map_
+        gr.update(visible=False),  # results
+        gr.update(visible=False),  # image_
+        gr.update(visible=False),  # text_count
+        gr.update(visible=False),  # text
+        gr.update(visible=False),  # next_button
+        gr.update(value=RULES, visible=True),  # rules
+        gr.update(visible=False),  # state
+        gr.update(visible=True),   # start_button
+        gr.update(value="-1", visible=False),  # coords
+        gr.update(visible=False),  # select_button
+    )
 
 if __name__ == "__main__":
     # login with the key from secret
@@ -1460,7 +1475,7 @@ if __name__ == "__main__":
                 gr.update(value="<h1 style='margin-top: 4em;'> AI vs Human Leaderboard on Im2GPS🌍 </h1>", visible=True), 
                 gr.update(value="<h3 style='margin-top: 1em;'>Thanks for playing ❤️</h3>", visible=True), 
                 gr.update(visible=False),
-                gr.update(value="Re-start", visible=True)
+                gr.update(value="Restart", visible=True)
             )
         else:
             return gr.update(), gr.update(), gr.update(), gr.update(), gr.update(), gr.update(), gr.update(), gr.update(), gr.update(), gr.update(), gr.update(), gr.update()
@@ -1525,7 +1540,16 @@ if __name__ == "__main__":
         text_end = gr.Markdown("", visible=False)
     
         coords = gr.Textbox(value="-1", label="Latitude, Longitude", visible=False, elem_id='coords-tbox')
-        start_button.click(start, inputs=[state], outputs=[map_, results, image_, text_count, text, next_button, rules, state, start_button, coords, select_button])
+        start_button.click(
+            start, 
+            inputs=[state], 
+            outputs=[map_, results, image_, text_count, text, next_button, rules, state, start_button, coords, select_button]
+        )
+        start_button.click(
+            go_to_landing, 
+            inputs=[state], 
+            outputs=[map_, results, image_, text_count, text, next_button, rules, state, start_button, coords, select_button]
+        )
         select_button.click(click, inputs=[state, coords], outputs=[map_, results, text, perf, select_button, next_button, start_button], js=map_js())
         next_button.click(next_, inputs=[state], outputs=[map_, results, image_, text_count, text, next_button, perf, coords, rules, text_end, select_button, start_button])
         exit_button.click(exit_, inputs=[state], outputs=[map_, results, image_, text_count, text, next_button, perf, coords, rules, text_end, select_button, start_button])
