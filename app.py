@@ -1175,7 +1175,7 @@ if __name__ == "__main__":
 
 
 class Engine(object):
-    def __init__(self, image_folder, csv_file, mpl=True, max_images=5):
+    def __init__(self, image_folder, csv_file, mpl=True, max_images=2):
         self.image_folder = image_folder
         self.csv_file = csv_file
         self.max_images = max_images
@@ -1478,7 +1478,7 @@ if __name__ == "__main__":
                 gr.update(value="Restart", visible=True)
             )
         else:
-            return gr.update(), gr.update(), gr.update(), gr.update(), gr.update(), gr.update(), gr.update(), gr.update(), gr.update(), gr.update(), gr.update(), gr.update()
+            return go_to_landing(state)
 
     def next_(state):
         if state['clicked']:
