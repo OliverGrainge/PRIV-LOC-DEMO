@@ -995,6 +995,83 @@ function createParticles() {
         hero.appendChild(particle);
     }
 }
+
+/* Add these CSS rules to your existing css variable */
+
+/* Fix for dataframe container */
+.dataframe-container {
+    overflow: visible !important;
+    margin-bottom: 2rem !important;
+}
+
+/* Ensure the dataframe wrapper has enough space */
+.gradio-dataframe {
+    overflow: visible !important;
+    margin-bottom: 2rem !important;
+}
+
+/* Fix for the dataframe table itself */
+.gradio-dataframe .table-wrap {
+    overflow: visible !important;
+    max-height: none !important;
+}
+
+/* Ensure parent containers don't clip content */
+.gradio-container .contain {
+    overflow: visible !important;
+}
+
+/* Additional spacing for dataframe */
+.gradio-dataframe table {
+    margin-bottom: 1rem !important;
+}
+
+/* If the dataframe is inside a column/row, ensure it has space */
+.gr-form > .wrap > .wrap {
+    overflow: visible !important;
+}
+
+/* Specific fix for the perf dataframe */
+#component-perf {
+    min-height: auto !important;
+    overflow: visible !important;
+    margin-bottom: 3rem !important;
+}
+
+
+
+/* Ensure the dataframe container expands to content */
+.dataframe table {
+    width: 100% !important;
+    table-layout: auto !important;
+}
+
+.dataframe tbody {
+    overflow: visible !important;
+}
+
+/* Add padding to the bottom of the app */
+.gradio-container {
+    padding-bottom: 4rem !important;
+}
+
+/* Ensure all parent containers allow overflow */
+.gr-panel {
+    overflow: visible !important;
+}
+
+.gr-box {
+    overflow: visible !important;
+}
+
+#component-perf .dataframe {
+    overflow: visible !important;
+}
+
+#perf-container {
+    overflow: visible !important;
+    padding-bottom: 1rem;
+}
 </script>
 """
 
@@ -1182,7 +1259,7 @@ if __name__ == "__main__":
 
 
 class Engine(object):
-    def __init__(self, image_folder, csv_file, mpl=True, max_images=2):
+    def __init__(self, image_folder, csv_file, mpl=True, max_images=5):
         self.image_folder = image_folder
         self.csv_file = csv_file
         self.max_images = max_images
@@ -1497,7 +1574,7 @@ if __name__ == "__main__":
             return gr.update(), gr.update(), gr.update(), gr.update(), gr.update(), gr.update(), gr.update(), gr.update(), gr.update(), gr.update(), gr.update(), gr.update(visible=False)
 
     def start(state):
-        state['engine'] = Engine(IMAGE_FOLDER, CSV_FILE, MPL, max_images=2)
+        state['engine'] = Engine(IMAGE_FOLDER, CSV_FILE, MPL, max_images=5)
         state['clicked'] = False
         image, text = state['engine'].load_image()
         # Force new map to re-initialize JS
@@ -1538,7 +1615,15 @@ if __name__ == "__main__":
         with gr.Row():
             select_button = gr.Button("Select", elem_id='latlon_btn', visible=False)
             next_button = gr.Button("Next", visible=False, elem_id='next')
-        perf = gr.Dataframe(value=None, visible=False, label='Average Performance (until now)')
+
+        with gr.Column(elem_id="perf-container"):
+            perf = gr.Dataframe(
+                value=None, 
+                visible=False, 
+                label='Average Performance (until now)',
+                elem_id='component-perf',  # Add ID for CSS targeting
+                wrap=True,      # Allow text wrapping
+            )
         print(perf)
         text_end = gr.Markdown("", visible=False)
     
@@ -1554,13 +1639,13 @@ if __name__ == "__main__":
         exit_button.click(exit_, inputs=[state], outputs=[map_, results, image_, text_count, text, next_button, perf, coords, rules, text_end, select_button, start_button])
 
     # local deployment
-    demo.queue().launch(allowed_paths=["custom.ttf", "geoscore.gif"], debug=True)
+    #demo.queue().launch(allowed_paths=["custom.ttf", "geoscore.gif"], debug=True)
 
     # heroku deployment
-    #port = int(os.environ.get("PORT", 7860))
-    #demo.queue().launch(
-    #    server_name="0.0.0.0",
-    #    server_port=port,
-    #    debug=False,
-    #    allowed_paths=["custom.ttf", "geoscore.gif"]
-    #)
+    port = int(os.environ.get("PORT", 7860))
+    demo.queue().launch(
+        server_name="0.0.0.0",
+        server_port=port,
+        debug=False,
+        allowed_paths=["custom.ttf", "geoscore.gif"]
+    )
