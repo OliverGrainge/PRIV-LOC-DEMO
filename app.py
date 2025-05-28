@@ -204,7 +204,9 @@ body {
     max-width: none !important;
     padding: 0 !important;
     background: transparent !important;
+    overflow: visible !important;
 }
+
 
 /* Enhanced Hero Section */
 .hero-section {
@@ -624,15 +626,20 @@ button:active {
     transform: translateY(-1px) !important;
 }
 
-/* Start Button Special Styling */
-.gradio-container [id="start-button"] {
-    width: 250px !important;
-    margin: 2rem auto !important;
-    display: block !important;
-    font-size: 1.25rem !important;
-    padding: 1.25rem 3rem !important;
-    background: var(--success) !important;
-    box-shadow: var(--shadow-xl) !important;
+.gradio-container #start-button:not([hidden]) {
+  width: 250px;
+  margin: 2rem auto;
+  font-size: 1.25rem;
+  padding: 1.25rem 3rem;
+  background: var(--success);
+  box-shadow: var(--shadow-xl);
+  /* no display property here */
+}
+
+/* Defensive rule: if the element is hidden, force it to stay hidden
+   even if some other author-level rule later tries to flip it */
+#start-button[hidden] {
+  display: none !important;
 }
 
 /* Game Interface Enhancements */
@@ -1423,21 +1430,6 @@ class Engine(object):
             json.dump({"lat": location[0], "lon": location[1], "time": time_elapsed, "user": self.tag}, f)
             f.write('\n')
 
-def go_to_landing(state):
-    state.clear()
-    return (
-        gr.update(visible=False),  # map_
-        gr.update(visible=False),  # results
-        gr.update(visible=False),  # image_
-        gr.update(visible=False),  # text_count
-        gr.update(visible=False),  # text
-        gr.update(visible=False),  # next_button
-        gr.update(value=RULES, visible=True),  # rules
-        gr.update(visible=False),  # state
-        gr.update(visible=True),   # start_button
-        gr.update(value="-1", visible=False),  # coords
-        gr.update(visible=False),  # select_button
-    )
 
 if __name__ == "__main__":
     # login with the key from secret
@@ -1450,7 +1442,8 @@ if __name__ == "__main__":
     import gradio as gr
     def click(state, coords):
         if coords == '-1' or state['clicked']:
-            return gr.update(), gr.update(), gr.update(), gr.update(), gr.update(), gr.update(), gr.update()
+            return gr.update(), gr.update(), gr.update(), gr.update(), gr.update(), gr.update(), gr.update(visible=False)  # Explicitly keep start_button hidden
+        
         lat, lon, country = coords.split(',')
         state['clicked'] = True
         image, text, df = state['engine'].click(float(lon), float(lat), country)
@@ -1458,8 +1451,18 @@ if __name__ == "__main__":
         kargs = {}
         if not MPL:
             kargs = {'value': empty_map()}
-        return gr.update(visible=False, **kargs), gr.update(value=image, visible=True), gr.update(value=text, visible=True), gr.update(value=df, visible=True), gr.update(visible=False), gr.update(visible=True), gr.update()
-
+        
+        # Make sure the last update object (for start_button) keeps it hidden
+        return (
+            gr.update(visible=False, **kargs),  # map_
+            gr.update(value=image, visible=True),  # results
+            gr.update(value=text, visible=True),  # text
+            gr.update(value=df, visible=True),  # perf
+            gr.update(visible=False),  # select_button
+            gr.update(visible=True),  # next_button
+            gr.update(visible=False)   # start_button - explicitly keep it hidden
+        )
+    
     def exit_(state):
         if state['engine'].index > 0:
             df = state['engine'].finish()
@@ -1474,11 +1477,10 @@ if __name__ == "__main__":
                 gr.update(value="-1", visible=False), 
                 gr.update(value="<h1 style='margin-top: 4em;'> AI vs Human Leaderboard on Im2GPS🌍 </h1>", visible=True), 
                 gr.update(value="<h3 style='margin-top: 1em;'>Thanks for playing ❤️</h3>", visible=True), 
-                gr.update(visible=False),
-                gr.update(value="Restart", visible=True)
-            )
-        else:
-            return go_to_landing(state)
+                gr.update(visible=False),  # select_button
+                gr.update(visible=False)   # start_button  ← hide it
+             )
+
 
     def next_(state):
         if state['clicked']:
@@ -1492,7 +1494,7 @@ if __name__ == "__main__":
                     kargs = {'value': empty_map()}
                 return gr.update(value=make_map_(), visible=True), gr.update(visible=False, **kargs), gr.update(value=image), gr.update(value=text, visible=True), gr.update(value='', visible=True), gr.update(visible=False), gr.update(visible=False), gr.update(value="-1"), gr.update(), gr.update(), gr.update(visible=True), gr.update()
         else:
-            return gr.update(), gr.update(), gr.update(), gr.update(), gr.update(), gr.update(), gr.update(), gr.update(), gr.update(), gr.update(), gr.update(), gr.update()
+            return gr.update(), gr.update(), gr.update(), gr.update(), gr.update(), gr.update(), gr.update(), gr.update(), gr.update(), gr.update(), gr.update(), gr.update(visible=False)
 
     def start(state):
         state['engine'] = Engine(IMAGE_FOLDER, CSV_FILE, MPL, max_images=2)
@@ -1508,8 +1510,7 @@ if __name__ == "__main__":
             gr.update(visible=True),                 # text
             gr.update(visible=False),                # next_button
             gr.update(value="<h1>Im2GPS (GPT-4.1)</h1>"), # rules
-            gr.update(visible=False),                # state
-            gr.update(visible=False),                # start_button
+            gr.update(visible=False),                # start_button - HIDE IT HERE
             gr.update(value="-1"),                   # coords
             gr.update(visible=True),                 # select_button
         )
@@ -1519,8 +1520,9 @@ if __name__ == "__main__":
         #rules = gr.Markdown(RULES, visible=True)
         rules = gr.HTML(RULES, visible=True)
 
+        start_button = gr.Button("Start Game", visible=True, elem_id='start-button')
         exit_button = gr.Button("Exit", visible=False, elem_id='exit_btn')
-        start_button = gr.Button("Start", visible=True, elem_id='start-button')
+        
         with gr.Row():
             map_ = make_map(height=512)
             if MPL:
@@ -1537,19 +1539,16 @@ if __name__ == "__main__":
             select_button = gr.Button("Select", elem_id='latlon_btn', visible=False)
             next_button = gr.Button("Next", visible=False, elem_id='next')
         perf = gr.Dataframe(value=None, visible=False, label='Average Performance (until now)')
+        print(perf)
         text_end = gr.Markdown("", visible=False)
     
         coords = gr.Textbox(value="-1", label="Latitude, Longitude", visible=False, elem_id='coords-tbox')
         start_button.click(
             start, 
             inputs=[state], 
-            outputs=[map_, results, image_, text_count, text, next_button, rules, state, start_button, coords, select_button]
+            outputs=[map_, results, image_, text_count, text, next_button, rules, start_button, coords, select_button]
         )
-        start_button.click(
-            go_to_landing, 
-            inputs=[state], 
-            outputs=[map_, results, image_, text_count, text, next_button, rules, state, start_button, coords, select_button]
-        )
+
         select_button.click(click, inputs=[state, coords], outputs=[map_, results, text, perf, select_button, next_button, start_button], js=map_js())
         next_button.click(next_, inputs=[state], outputs=[map_, results, image_, text_count, text, next_button, perf, coords, rules, text_end, select_button, start_button])
         exit_button.click(exit_, inputs=[state], outputs=[map_, results, image_, text_count, text, next_button, perf, coords, rules, text_end, select_button, start_button])
