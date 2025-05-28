@@ -57,7 +57,7 @@ RULES = """
             <div class="stat-label">Max Points</div>
         </div>
         <div class="stat-item">
-            <div class="stat-number">4</div>
+            <div class="stat-number">8</div>
             <div class="stat-label">AI Models</div>
         </div>
         <div class="stat-item">
